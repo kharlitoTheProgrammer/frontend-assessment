@@ -6,7 +6,7 @@ import { CircleCheck, LucideAngularModule, Trash2 } from 'lucide-angular';
 
 @Component({
   selector: 'app-modal',
-  imports: [CommonModule, AddTaskComponent, LucideAngularModule],
+  imports: [CommonModule, LucideAngularModule],
   standalone: true,
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.css',

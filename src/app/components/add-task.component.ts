@@ -45,7 +45,7 @@ export class AddTaskComponent {
         this.title = this.existingTask.title;
         this.description = this.existingTask.description;
       } else {
-        // When adding (no existingTask), clear inputs
+        // When adding, clear inputs
         this.title = '';
         this.description = '';
       }

@@ -1,11 +1,12 @@
-<div class="flex flex-col items-center justify-center">
+<div class="flex flex-col items-center justify-center md:max-w-xl md:mx-auto">
   <section class="flex items-center gap-4 pt-35 pb-5">
     <img src="/hexalog_image.png" alt="Login icon" />
     <h1 class="text-3xl font-bold">Hexalog</h1>
   </section>
   <section class="px-15">
     <p class="text-center text-xs">
-      Welcome to your 6 sided assistant. Please Login and Start asking
+      Welcome to your 6 sided assistant.<br />
+      Please Login and Start asking
     </p>
   </section>
   <form (ngSubmit)="onLogin()" class="pt-10 w-full px-8">
@@ -46,7 +47,7 @@
   >
     Forgot Password?
   </button>
-  <div class="absolute bottom-0">
+  <div class="absolute bottom-0 md:hidden">
     <img src="/bottom_triangle.png" alt="Bottom triangle design" />
   </div>
 </div>

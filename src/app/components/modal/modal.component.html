@@ -16,6 +16,8 @@
       </div>
     </section>
     <ng-content></ng-content>
+
+    <!-- Dynamically show the actions for modal -->
     <div class="mt-6 flex justify-end gap-3" *ngIf="showActions">
       <button
         [ngClass]="{

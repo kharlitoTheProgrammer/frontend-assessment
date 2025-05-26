@@ -1,7 +1,9 @@
+<!-- Show when tasks array is empty -->
 <div *ngIf="(tasks$ | async)?.length === 0" class="flex justify-center pt-5">
   <p class="text-xl">No task yet.</p>
 </div>
 
+<!-- Show when tasks has an item -->
 <div
   *ngFor="let task of tasks$ | async"
   class="p-4 my-4 bg-white shadow-lg rounded-md border border-gray-100"
