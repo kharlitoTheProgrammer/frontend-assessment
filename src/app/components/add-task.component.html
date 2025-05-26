@@ -1,0 +1,25 @@
+<form (ngSubmit)="addTask()" class="space-y-4">
+  <label for="title" class="text-gray-400">Task</label>
+  <input
+    [(ngModel)]="title"
+    name="title"
+    placeholder="Task"
+    required
+    class="border p-2 w-full border-gray-300 px-4 py-3 placeholder:text-gray-300 rounded-md"
+  />
+  <label for="description" class="text-gray-400">Description</label>
+  <textarea
+    [(ngModel)]="description"
+    name="description"
+    placeholder="Description"
+    maxlength="250"
+    class="border p-2 w-full border-gray-300 px-4 py-3 placeholder:text-gray-300 rounded-md"
+  ></textarea>
+  <button
+    type="submit"
+    class="bg-[#24F292] px-4 py-2 w-full flex justify-center gap-2 font-semibold rounded-md cursor-pointer hover:bg-green-400"
+  >
+    <span><lucide-angular [img]="currentIcon"></lucide-angular></span
+    >{{ isEditMode ? "Save" : "Add" }}
+  </button>
+</form>

@@ -1,0 +1,72 @@
+<div *ngIf="(tasks$ | async)?.length === 0" class="flex justify-center pt-5">
+  <p class="text-xl">No task yet.</p>
+</div>
+
+<div
+  *ngFor="let task of tasks$ | async"
+  class="p-4 my-4 bg-white shadow-lg rounded-md border border-gray-100"
+>
+  <section class="flex items-center justify-between">
+    <div class="flex gap-2">
+      <h3 class="text-2xl font-bold">{{ task.title }}</h3>
+      <button
+        class="rounded-lg p-1 bg-[#F3F3F8] cursor-pointer hover:bg-gray-200"
+        (click)="showEdit(task)"
+      >
+        <lucide-angular [img]="Edit" />
+      </button>
+    </div>
+    <button
+      class="rounded-lg p-1 bg-[#F3F3F8] text-red-500 cursor-pointer hover:bg-gray-200"
+      (click)="showDeleteConfirm(task)"
+    >
+      <lucide-angular [img]="Trash" />
+    </button>
+  </section>
+  <p class="py-5">{{ task.description }}</p>
+  <button
+    (click)="showMarkAsDoneConfirm(task)"
+    [disabled]="task.status !== 'pending'"
+    class="bg-[#F3F3F8] text-black px-3 py-2 mt-2 w-full rounded-md flex justify-center gap-2 font-semibold border border-gray-300 cursor-pointer hover:bg-gray-200"
+  >
+    <span class="text-green-500">
+      <lucide-angular [img]="Check" />
+    </span>
+    {{ task.status === "pending" ? "Mark as done" : "Done" }}
+  </button>
+  <app-modal
+    [show]="showEditModal"
+    (close)="closeEditModal()"
+    [showActions]="false"
+    [title]="'Edit Task'"
+  >
+    <app-add-task
+      [existingTask]="editTaskData"
+      (confirmEdit)="handleEditConfirm($event)"
+    ></app-add-task>
+  </app-modal>
+  <app-modal
+    [show]="confirmMarkAsDone"
+    [title]="'Mark as done'"
+    (confirm)="handleMarkAsDoneConfirm()"
+    [deleteIcon]="Check"
+    (close)="closeMarkAsDone()"
+    ><span class="flex gap-1 justify-center text-gray-500">
+      {{`Are you sure you want to complete `}}
+      <p class="font-bold text-black">{{ taskTitleToMarkDone }}</p>
+      {{`?`}}
+    </span></app-modal
+  >
+  <app-modal
+    [show]="confirmDelete"
+    (close)="closeModal()"
+    [title]="'Delete'"
+    confirmText="Delete"
+    (confirm)="handleDeleteConfirm()"
+  >
+    <span class="flex gap-1 justify-center text-gray-500">
+      {{`Are you sure you want to delete `}}
+      <p class="font-bold text-black">{{`${task.title}?`}}</p>
+    </span>
+  </app-modal>
+</div>

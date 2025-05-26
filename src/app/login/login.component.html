@@ -1,0 +1,52 @@
+<div class="flex flex-col items-center justify-center">
+  <section class="flex items-center gap-4 pt-35 pb-5">
+    <img src="/hexalog_image.png" alt="Login icon" />
+    <h1 class="text-3xl font-bold">Hexalog</h1>
+  </section>
+  <section class="px-15">
+    <p class="text-center text-xs">
+      Welcome to your 6 sided assistant. Please Login and Start asking
+    </p>
+  </section>
+  <form (ngSubmit)="onLogin()" class="pt-10 w-full px-8">
+    <label for="username" class="text-xs text-gray-500">Username</label>
+    <input
+      [(ngModel)]="username"
+      name="username"
+      type="email"
+      placeholder="Username"
+      id="username"
+      required
+      class="w-full p-2 mb-3 border border-gray-300 rounded placeholder:text-gray-400 placeholder:text-xs"
+    />
+    <label for="password" class="text-xs text-gray-500">Password</label>
+    <input
+      [(ngModel)]="password"
+      name="password"
+      type="password"
+      id="password"
+      placeholder="•••••••••••"
+      required
+      class="w-full p-2 mb-3 border border-gray-300 rounded placeholder:text-gray-400 placeholder:font-semibold"
+    />
+    <button
+      type="submit"
+      class="bg-gradient-to-r from-[#5556FF] to-[#DA68A8] text-white w-full rounded-lg py-3 text-sm font-semibold mt-5"
+      [disabled]="isDisabled"
+    >
+      Sign In
+    </button>
+  </form>
+  <div class="text-red-500 text-sm mt-2" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+  <button
+    (click)="onForgotPassword()"
+    class="mt-2 text-sm font-light text-gray-500"
+  >
+    Forgot Password?
+  </button>
+  <div class="absolute bottom-0">
+    <img src="/bottom_triangle.png" alt="Bottom triangle design" />
+  </div>
+</div>

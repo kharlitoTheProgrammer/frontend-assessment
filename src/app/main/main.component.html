@@ -1,0 +1,65 @@
+<style>
+  .gradient-button {
+    background: transparent;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+
+    /* Gradient Text */
+    color: transparent;
+    background-image: linear-gradient(to right, #5556ff, #da68a8);
+    background-clip: text;
+    -webkit-background-clip: text; /* for Safari */
+    -webkit-text-fill-color: transparent; /* for Safari */
+
+    border-radius: 50px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+  }
+
+  .gradient-button:hover {
+    opacity: 0.8;
+  }
+</style>
+
+<div class="max-w-2xl mx-auto p-8">
+  <header class="flex justify-between">
+    <div class="flex items-center gap-2">
+      <img src="/hexalog_image.png" alt="" class="w-8 md:w-15" />
+      <p class="text-lg font-bold md:text-2xl">Hexalog</p>
+    </div>
+    <button
+      class="bg-gradient-to-t from-[#5556FF] to-[#DA68A8] text-transparent bg-clip-text border border-black rounded px-4 h-10"
+      (click)="onSignOut()"
+    >
+      Sign Out
+    </button>
+  </header>
+  <section class="flex items-center justify-between pt-5">
+    <section>
+      <h3
+        class="text-3xl bg-gradient-to-t from-[#5556FF] to-[#DA68A8] text-transparent bg-clip-text md:text-5xl mt-5"
+      >
+        Tasks
+      </h3>
+    </section>
+    <button
+      (click)="openAddTaskModal()"
+      class="border rounded-full p-1.5 bg-gradient-to-t from-[#5556FF] to-[#DA68A8] text-white md:p-2.5 cursor-pointer hover:scale-105 transition duration-200"
+    >
+      <lucide-angular [img]="SquarePlus"></lucide-angular>
+    </button>
+  </section>
+  <app-modal
+    *ngIf="showAddModal"
+    [show]="showAddModal"
+    [title]="'New task'"
+    (close)="closeModal()"
+    [showActions]="false"
+  >
+    <app-add-task (submitted)="closeModal()"></app-add-task>
+  </app-modal>
+  <div class="overflow-y-auto z-100">
+    <app-task-list></app-task-list>
+  </div>
+</div>

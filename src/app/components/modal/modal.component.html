@@ -1,0 +1,33 @@
+<div
+  *ngIf="show"
+  class="fixed inset-0 flex items-center justify-center backdrop-blur-sm shadow-2xl p-4 bg-opacity-50 z-50"
+>
+  <div
+    class="bg-white rounded-lg shadow-lg p-6 max-w-md w-full border border-gray-300"
+  >
+    <section class="flex justify-between">
+      <div>
+        <h2 class="text-lg font-semibold mb-4 text-gray-500">{{ title }}</h2>
+      </div>
+      <div>
+        <button class="text-xl cursor-pointer" (click)="close.emit()">
+          &times;
+        </button>
+      </div>
+    </section>
+    <ng-content></ng-content>
+    <div class="mt-6 flex justify-end gap-3" *ngIf="showActions">
+      <button
+        [ngClass]="{
+          'bg-[#F3F3F8] text-red-500 hover:bg-gray-300':
+            confirmText === 'Delete',
+          'bg-green-500 text-white hover:bg-green-600': confirmText !== 'Delete'
+        }"
+        class="px-4 py-2 rounded font-bold w-full flex justify-center gap-2 cursor-pointer"
+        (click)="confirm.emit()"
+      >
+        <span><lucide-angular [img]="deleteIcon" /></span> {{ confirmText }}
+      </button>
+    </div>
+  </div>
+</div>
