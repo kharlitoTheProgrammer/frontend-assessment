@@ -1,4 +1,0 @@
-{
-  "builds": [{ "src": "dist/frontend-assessment/**", "use": "@vercel/static" }],
-  "routes": [{ "src": "/(.*)", "dest": "/index.html" }]
-}
