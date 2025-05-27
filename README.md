@@ -1,5 +1,14 @@
 # FrontendAssessment
 
+## Login Credentials
+
+To access the application, use the following credentials:
+
+- **Email:** user@domain.com  
+- **Password:** TestPassword
+
+These credentials are for demo purposes only.
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.13.
 
 ## Development server
